@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function average(arr) {
+        //     let sum = 0;
+        //     let length = 0;
+        //     for (let i in retStud.marks) {
+        //         sum += arr[i];
+        //         length++;
+        //     }
+        //     return sum / length;
+        // }
+
+        // 1. Отримуємо рядок з пам'яті
+        let data = localStorage.getItem("stud");
+
+        if (data) {
+            // 2. Перетворюємо рядок назад в об'єкт
+            let retStud = JSON.parse(data);
+
+            // Функція підрахунку середнього
+            const average = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+            document.write('<p><b>Студент:</b> ' + retStud.name + '</p>');
+            document.write('<p><b>Оценки:</b> ' + retStud.marks.join(', ') + '</p>');
+            document.write('<p><b>Средний балл:</b> ' + average(retStud.marks).toFixed(2) + '</p>');
+        } else {
+            document.write('<p>Дані не знайдено.</p>');
+        }
+
+    </script>
+</body>
+
+</html>
