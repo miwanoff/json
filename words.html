@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .header {
+            color: #5b5b5b;
+        }
+        input{
+            display: block;
+            margin:5px; 
+        }
+        a {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="header">Создайте словарь</h1>
+    <p>Введите количество слов:</p>
+    <input type="number" name="count" id="count" />
+
+    <input type="button" id="createForm" value="Создать форму для ввода слов">
+    <div id="inps"></div>
+    <button id="createDic">Создать словарь</button>
+    <a href="" id="a">Сохранить файл</a>
+    <script>
+        let words = '';
+
+        function inputGenerate() {
+            let inps = document.getElementById("inps");
+            let count = document.getElementById("count").value;
+
+            for (let index = 0; index < count; index++) {
+
+                let input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('class', 'word');
+                inps.appendChild(input);
+
+                //  let input = document.createElement('input');
+                // input.setAttribute('type', 'text');
+                // input.setAttribute('class', 'translate');
+                // inps.appendChild(input);
+
+            }
+        }
+
+        function createWords(name, type) {
+            words = "[";
+            createStringWords();
+            words += "]";
+            let a = document.getElementById("a");
+            let file = new Blob([words], {
+                type: type
+            });
+            a.href = URL.createObjectURL(file);
+            a.download = name;
+             a.click();//можно эмулировать нажатие ссылки
+        }
+
+        function createStringWords() {
+            let arrWords = document.querySelectorAll('.word');
+            console.log(arrWords);
+            let arr = [];
+            for (let index = 0; index < arrWords.length; index++) {
+                arr.push(`"${arrWords[index].value}"`);
+            }
+            words += arr.join(',');
+        }
+
+        document.getElementById("createDic").onclick = function () {
+            createWords('user_words.json', 'text/plain');
+        };
+
+        document.getElementById("createForm").onclick = function () {
+            inputGenerate();
+        };
+    </script>
+</body>
+
+</html

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let words = ["apple", "pear"];
+        window.addEventListener("load", loadWords);
+
+        function loadWords() {
+            let xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "mywords1.json", true);
+            xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+            xhttp.send();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState != 4) return;
+                if (xhttp.status != 200) {
+                    alert(xhttp.status + ": " + xhr.statusText);
+                } else {
+                    let words = JSON.parse(xhttp.responseText);
+                    goWords(words);
+                }
+            };
+        }
+
+        function goWords(words) {
+
+            for (let i = 0; i < words.length; i++) {
+                const word = words[i];
+                //   document.writeln(`<img id="${word}" src="images/${word}.png" class="word">`);
+
+                document.writeln(
+                    `<img id="${word}" src="images/${word}.png" alt="" class="word">`
+                );
+            }
+            const wordElements = document.querySelectorAll("img.word");
+
+            for (let i = 0; i < wordElements.length; i++) {
+                wordElements[i].addEventListener("click", checkWord);
+            }
+        }
+
+        function checkWord(event) {
+            let image = event.target;
+            let word = image.id;
+            alert(word);
+        }
+
+    </script>
+</body>
+
+</html>
