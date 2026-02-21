@@ -22,14 +22,14 @@
 </head>
 
 <body>
-    <h1 class="header">Создайте словарь</h1>
-    <p>Введите количество слов:</p>
+    <h1 class="header">Створити словник</h1>
+    <p>Введіть кількість слів:</p>
     <input type="number" name="count" id="count" />
 
-    <input type="button" id="createForm" value="Создать форму для ввода слов">
+    <input type="button" id="createForm" value="Створити форму для введення слів">
     <div id="inps"></div>
-    <button id="createDic">Создать словарь</button>
-    <a href="" id="a">Сохранить файл</a>
+    <button id="createDic">Створити словник</button>
+    <a href="" id="a">Зберегти файл</a>
     <script>
         let words = '';
 
@@ -62,7 +62,7 @@
             });
             a.href = URL.createObjectURL(file);
             a.download = name;
-             a.click();//можно эмулировать нажатие ссылки
+             a.click();//можна емулювати натискання посилання
         }
 
         function createStringWords() {
