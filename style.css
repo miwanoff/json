@@ -1,0 +1,15 @@
+.wrap {
+  max-width: 900px;
+  border: 2px solid green;
+  margin: 20px;
+  padding: 20px;
+}
+.bookWrap {
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+  width: 200px;
+}
+.bookWrap img {
+  height: 200px;
+}
